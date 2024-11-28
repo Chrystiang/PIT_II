@@ -34,6 +34,8 @@ return function(ScreenManager, ScreenGui: ScreenGui, Data: {})
         Buttons.Decrease.Activated:Connect(function()
             UpdateItemAmount(-1)
         end)
+
+        UpdateItemAmount(ScreenManager.Cart[tostring(Index)] or 0)
    end
 
     ScreenGui.BuyButton.Activated:Once(function()

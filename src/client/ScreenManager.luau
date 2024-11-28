@@ -6,10 +6,12 @@ local CupcakeList   = require(Shared.CupcakeList)
 local Screens: ScreenGui    = PlayerGui:WaitForChild("Screens")
 local Background: ScreenGui = PlayerGui:WaitForChild("Background")
 local BackButton: GuiButton = Background.BackButton
+local HelpButton: GuiButton = Background.HelpButton
 
 local Module = {
     ScreenHistory = {},
     Cart = {},
+    HelpMessages = {},
     Purchases = {
         {
             ["Date"] = 1732734209,
@@ -44,6 +46,7 @@ Module.ShowScreen = function(self, ScreenName: string, Arguments: {}|number)
     end
 
     BackButton.Visible = not table.find(self.HiddenBackButtonScreens, ScreenName)
+    HelpButton.Visible = ScreenName ~= "Help"
 end
 
 Module.GetTotalPrice = function(self): number
@@ -67,8 +70,10 @@ BackButton.Activated:Connect(function()
 
     table.remove(ScreenHistory, #ScreenHistory)
     Module:ShowScreen(ScreenHistory[#ScreenHistory].Name)
+end)
 
-    print(Module.ScreenHistory)
+HelpButton.Activated:Connect(function()
+    Module:ShowScreen("Help")
 end)
 
 return Module
