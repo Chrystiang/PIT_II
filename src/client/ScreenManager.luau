@@ -20,7 +20,7 @@ local Module = {
                ["2"] = 4
             },
             ["Total"] = 44,
-            Review = 0,
+            Review = 3,
          }
     },
     HiddenBackButtonScreens = {

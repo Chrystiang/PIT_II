@@ -3,11 +3,13 @@ return function(ScreenManager, ScreenGui: ScreenGui, Data: {})
         Date = DateTime.now().UnixTimestamp,
         Total = ScreenManager:GetTotalPrice(),
         Items = ScreenManager.Cart,
-        Review = 0
+        Review = 3
     }
 
-    table.insert(ScreenManager.Purchases, 1, Purchased)
-    ScreenManager.Cart = {}
+    if next(Purchased.Items) then
+        table.insert(ScreenManager.Purchases, 1, Purchased)
+        ScreenManager.Cart = {}
+    end
 
     ScreenGui.HomeButton.Activated:Once(function()
         ScreenManager:ShowScreen("Home")
