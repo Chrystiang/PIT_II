@@ -11,7 +11,7 @@ return function(ScreenManager, ScreenGui: ScreenGui, Data: {})
             FrameDraft.Visible = true
             FrameDraft.Parent = ScreenGui.ScrollingFrame.CustomerFrame
             table.insert(ScreenManager.HelpMessages, Text)
-            Text = ""
+            TextBox.Text = ""
         end
     end
 

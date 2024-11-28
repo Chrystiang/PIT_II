@@ -25,7 +25,8 @@ local Module = {
     },
     HiddenBackButtonScreens = {
         "Home",
-        "Purchased"
+        "Purchased",
+        "Pay"
     }
 }
 
@@ -46,7 +47,7 @@ Module.ShowScreen = function(self, ScreenName: string, Arguments: {}|number)
     end
 
     BackButton.Visible = not table.find(self.HiddenBackButtonScreens, ScreenName)
-    HelpButton.Visible = ScreenName ~= "Help"
+    HelpButton.Visible = ScreenName ~= "Help" and ScreenName ~= "Pay"
 end
 
 Module.GetTotalPrice = function(self): number
@@ -60,6 +61,9 @@ end
 
 Module.UpdateCart = function(self, CupcakeID, Amount)
     self.Cart[tostring(CupcakeID)] = Amount
+    if Amount == 0 then
+        self.Cart[tostring(CupcakeID)] = nil
+    end
     
     Screens.Menu.BuyButton.TotalPrice.Text = "R$"..self:GetTotalPrice()
 end

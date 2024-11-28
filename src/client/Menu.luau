@@ -40,6 +40,6 @@ return function(ScreenManager, ScreenGui: ScreenGui, Data: {})
 
     ScreenGui.BuyButton.Activated:Once(function()
         if ScreenManager:GetTotalPrice() <= 0 then return end
-        ScreenManager:ShowScreen("Purchased")
+        ScreenManager:ShowScreen("Pay")
     end)
 end
